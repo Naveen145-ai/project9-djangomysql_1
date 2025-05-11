@@ -22,7 +22,12 @@
                             <a href="{% url 'Productview' item.category.slug item.slug %}">
                                 <div class="card-body">
                                     <div class="category-image">
+                                        {% if item.product_image %}
                                         <img src="{{ item.product_image.url }}" alt="Product image" class="w-100"/>
+                                    {% else %}
+                                        <img src="{% static 'images/default-product.jpg' %}" alt="No image available" class="w-100"/>
+                                    {% endif %}
+                                    
                                     </div>
                                     <h4 class="text-center">{{ item.name }}</h4>
                                     <span class="float-start">Rs {{ item.original_price|stringformat:'d' }}</span>
